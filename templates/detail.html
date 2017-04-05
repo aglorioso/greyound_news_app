@@ -1,9 +1,24 @@
 <!doctype html>
 <html lang="en">
-    <head></head>
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    </head>
     <body>
-        <h1>{{ object.dog_name }}, a {{ object.age }}-year-old-{{ object.gender }}, died on {{ object.date_of_death }}
-        in {{ object.facility_edited }} at {{ object.address }}. <br/><br/>
-        Did the dog race the day he or she died? {{ object.officially_raced_day_of_death2 }}
+        <div id="map" style="width:100%; height:300px;"></div>
+        <h1>
+        	{{ object.dog_name }}, a {{ object.age }}-year-old-{{ object.gender }}, died on {{ object.date_of_death }}
+        	in {{ object.facility_edited }} at {{ object.address }}. <br/><br/>
+        	Did the dog race the day he or she died? {{ object.officially_raced_day_of_death2 }}.
+        </h1>
+        <script type="text/javascript">
+            var map = L.map('map').setView([{{ object.lat }}, {{ object.lng }}], 16);
+            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            });
+            map.addLayer(osmLayer);
+            var marker = L.marker([{{ object.lat }}, {{ object.lng }}]).addTo(map);
+        </script>
     </body>
 </html>
