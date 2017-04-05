@@ -3,5 +3,34 @@
     <head></head>
     <body>
         <h1>Greyhound dog deaths in Florida since 2013.</h1>
+        <table border=1 cellpadding=7>
+        	<tr>
+        		<th>Name</th>
+        		<th>Age</th>
+				<th>Gender</th>
+        		<th>Date of death</th>
+        		<th>Facility</th>
+        		<th>Kennel Operator</th>
+        		<th>Trainer</th>
+        		<th>Raced on the day they died?</th>
+        		<th>Details on how they died</th>
+        		<th>Death related to racing?</th>
+
+        	</tr>
+        	{% for obj in object_list %}
+        	<tr>
+        		<td>{{ obj.dog_name }}</td>
+        		<td>{{ obj.age }}</td>
+        		<td>{{ obj.gender }}</td>
+        		<td>{{ obj.date_of_death }}</td>
+        		<td>{{ obj.facility_edited }}</td>
+        		<td>{{ obj.kennel_operator }}</td>
+        		<td>{{ obj.trainer }}</td>
+        		<td>{{ obj.officially_raced_day_of_death }}</td>
+        		<td>{{ obj.details }}</td>
+        		<td>{{ obj.category }}</td>
+        	</tr>
+        	{% endfor %}
+        </table>
     </body>
 </html>
