@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    </head>
+    <body>
+        <div id="map" style="width:100%; height:300px;"></div>
+        <h1>
+        	AJs Bornthisway, a 2-year-old-male, died on 12/4/13
+        	in Florida Kennels Inc at 7218 West 4th Avenue, Hialeah, FL 33014. <br/><br/>
+        	Did the dog race the day he or she died? No.
+        </h1>
+        <script type="text/javascript">
+            var map = L.map('map').setView([25.888831, -80.293888], 16);
+            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
+            });
+            map.addLayer(osmLayer);
+            var marker = L.marker([25.888831, -80.293888]).addTo(map);
+        </script>
+    </body>
+</html>
