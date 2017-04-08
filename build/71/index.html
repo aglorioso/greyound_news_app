@@ -7,13 +7,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     </head>
     <body>
-       <!-- <nav>
-            <iframe allowtransparency="true" src="https://www.naplesnews.com.com/services/cobrand/header/" scrolling="no" frameborder="0" style="border-width:0px; height: 40px; width: 110% !important;margin-left:-10px;"></iframe>
-            <a href="https://naplesnews.com/">
+        <nav>
+            <!--<iframe allowtransparency="true" src="https://www.naplesnews.com.com/services/cobrand/header/" scrolling="no" frameborder="0" style="border-width:0px; height: 40px; width: 110% !important;margin-left:-10px;"></iframe>-->
+            <a href="https://twitter.com/ndn/">
+            <img src="./static/Naples_Hor_ST_Color_RGB.png">
             </a>
-        </nav>-->
+        </nav>
         <header>
-            <link rel="stylesheet" href="./static/Naples_Hor_ST_Color_RGB.png">
             <h1>LKs Kennesaw died on 12/19/15
             at Sanford Orlando Kennel Club in Longwood. <br/><br/>
             </h1>
@@ -28,12 +28,12 @@
             map.addLayer(osmLayer);
             var blackIcon = L.Icon.extend({
                 options: {
-                    iconUrl: "/static/marker-48.png",
+                    iconUrl: "./static/marker-48.png",
                     iconSize: [35, 35]
                 }
             });
             var marker = L.marker([28.6843418, -81.3415513], {icon: new blackIcon()}).addTo(map);
         </script>
-        <iframe allowtransparency="true" src="https://www.naplesnews.com/services/cobrand/footer/" scrolling="no"frameborder="0" style="border-width:0px;height: 150px; width: 100%;"></iframe>
+        <!--<iframe allowtransparency="true" src="https://www.naplesnews.com/services/cobrand/footer/" scrolling="no"frameborder="0" style="border-width:0px;height: 150px; width: 100%;"></iframe>-->
     </body>
 </html>
