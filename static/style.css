@@ -8,18 +8,18 @@ body {
 nav {
     background-color: #333132;
     width: 100%;
-    height: 50px;
+    height: 35px;
 }
 nav img {
-    height: 64px;
-    padding: 25px;
+    height: 75px;
+    padding: 100px;
 }
 header {
     margin: 100px 10px 15px 10px;
     font-family: Times, Times New Roman, serif;
 }
 h1 {
-    margin: 10;
+    margin: 20;
     padding: 30;
     font-size: 20px;
     line-height: 30px;
