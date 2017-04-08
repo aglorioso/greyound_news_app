@@ -1,42 +1,60 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"  >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" >
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     </head>
     <body>
-        <div id="map" style="width:100%; height:700px;"></div>
-        <h1>Greyhound deaths since 2013</h1>
-        <table border=1 cellpadding=8>
+        <nav>
+            <iframe allowtransparency="true" src="http://www.naplesnews.com.com/services/cobrand/header/" scrolling="no" frameborder="0" style="border-width:0px; height: 40px; width: 110% !important;margin-left:-10px;"></iframe>
+            <a href="http://naplesnews.com/">
+            <img src="{{ url_for('static', filename='Naples_Hor_ST_Color_RGB.png') }}">
+            </a>
+        </nav>
+        <header>
+            <h1>These are the 383 greyhounds who have died in service to the Florida dog racing industry since 2013.</h1>
+            <h2>The Naples Daily News obtained a database on greyhound deaths from the state's Department of Business and Professional regulation and reviewed state records maintained by  GREY2K, which indicate one greyhound race dog dies every three days in Florida, a leading state for the sport. The national nonprofit organization argues these dogs should be untethered from  gambling laws, which currently require card games run outside of Seminole-owned gaming facilities to be tied to live events such as jai alai matches, horse and greyhound racing. </br></br>
+            
+            GREY2K's goal is to phase out greyhound racing across the country all together. </br></br>
+
+
+            While the two special interests are at political odds, greyhound-racing lobbyist, Jack Cory, says about 50 percent of greyhound deaths are due to race-related issues. Cory says that at any given moment there are about 8,000 greyhound race dogs in Florida, a number which the state's Department of Business and Professional regulation could not confirm.</br></br>
+
+            This is the most accurate data the state has but it is self-reported. Two of Florida's 12 race tracks have a relatively low numbers of reported deaths on their premises since 2013: Naples-Fort Myers Rack Track and Melbourne. The average number of deaths per track is 32. There have been just three reported deaths at the Naples track and six reported deaths at the Melbourne track. </br></br>
+
+            The Naples track lobbyist, Ron Book, says his track has a zero-tolerance policy for bad behavior towards dogs, which is why their numbers are so low. </br></br>
+
+            Currently, there are two philosophically opposed gambling bills up in the legislative session. The House bill, H 7037, would crack down on gambling laws entangled in a series of federal and state court battles and tie greyhound racing to gambling in Florida until 2036. The Senate bill, SB8, would expand gambling in a number of ways, including allowing card rooms to operate outside live event, thus cutting greyhounds free from the industry.</br></br>
+
+            In 2013, GREY2K, lobbied the Florida Department of Business Regulation to pass a rule that requires kennel operators that contract with race tracks to report greyhound deaths on track or kennel sites to the state within 18 hours. Since then, the group has been using those deaths to further its political cause. </br></br>
+
+            The organization keeps extensive records on the dogs that have died Here is an interactive presentation of the dogs who have died but the Naples Daily News has decided to publish only what it could verify.
+            <div class="byline"><p>
+                By <a href="http://www.naplesnews.com/search/Alexandra%20Glorioso/">Alexandra Glorioso</a>
+            </p></div>
+        </header>
+        <div id="map" style="width:100%; height:400px;"></div>
+        <table border=2 cellpadding=7>
             <tr>
                 <th>Name</th>
-                <th>Age</th>
-                <th>Gender</th>
                 <th>Date of death</th>
                 <th>Facility</th>
-                <th>Kennel Operator</th>
-                <th>Trainer</th>
-                <th>Raced on the day they died?</th>
-                <th>Details on how they died</th>
-                <th>Death related to racing?</th>
+                <th>City</th>
             </tr>
-            {% for obj in object_list %}
+        {% for obj in object_list %}
             <tr>
-                <td><a href="{{ obj.row_id }}/">{{ obj.dog_name }}</a></td>
-                <td>{{ obj.age }}</td>
-                <td>{{ obj.gender }}</td>
-                <td>{{ obj.date_of_death }}</td>
-                <td>{{ obj.facility_edited }}</td>
-                <td>{{ obj.kennel_operator }}</td>
-                <td>{{ obj.trainer }}</td>
-                <td>{{ obj.officially_raced_day_of_death }}</td>
-                <td>{{ obj.details }}</td>
-                <td>{{ obj.category }}</td>            
+                <td><a href="{{ obj.g2k_row_id }}/">{{ obj.g2k_dog_name }}</a></td>
+               <td>{{ obj.g2k_date_of_death }}</td>
+                <td>{{ obj.g2k_facility_edited }}</td>
+                <td>{{ obj.city }}</td>
             </tr>
         {% endfor %}
         </table>
+        <iframe allowtransparency="true" src="http://www.naplesnews.com/services/cobrand/footer/" scrolling="no" frameborder="0" style="border-width:0px;height: 150px; width: 100%;"></iframe>
         <script type="text/javascript">
-            var map = L.map('map').setView([28.538336, -81.379234], 7);
+            var map = L.map('map').setView([28.538336, -81.379234], 6);
             var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 18,
                 attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
@@ -49,8 +67,8 @@
                 {
                   "type": "Feature",
                   "properties": {
-                    "full_name": "{{ obj.dog_name }}",
-                    "id": "{{ obj.row_id }}"
+                    "full_name": "{{ obj.g2k_dog_name }}",
+                    "id": "{{ obj.g2k_row_id }}"
                   },
                   "geometry": {
                     "type": "Point",
@@ -60,13 +78,22 @@
                 {% endfor %}
               ]
             };
+            var blackIcon = L.Icon.extend({
+                options: {
+                    iconUrl: "{{ url_for('static', filename='marker-24.png') }}",
+                    iconSize: [24, 24]
+                }
+            });
             var dataLayer = L.geoJson(data, {
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, {icon: new blackIcon()});
+                },
                 onEachFeature: function(feature, layer) {
                     layer.bindPopup(
                         '<a href="' + feature.properties.id + '/">' + 
                         feature.properties.full_name +
                         '</a>'
-                        );
+                    );
                 }
             });
             map.addLayer(dataLayer);

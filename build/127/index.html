@@ -1,16 +1,24 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" >
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     </head>
     <body>
+        <nav>
+            <iframe allowtransparency="true" src="http://www.naplesnews.com.com/services/cobrand/header/" scrolling="no" frameborder="0" style="border-width:0px; height: 40px; width: 110% !important;margin-left:-10px;"></iframe>
+            <a href="http://naplesnews.com/">
+            <img src="/static/Naples_Hor_ST_Color_RGB.png">
+            </a>
+        </nav>
+        <header>
+            <h1>Atascocita Sol died on 1/10/15
+            at Palm Beach Kennel Club in West Palm Beach. <br/><br/>
+            </h1>
+        </header>
         <div id="map" style="width:100%; height:300px;"></div>
-        <h1>
-        	Atascocita Sol, a 1-year-old-male, died on 1/10/15
-        	in Palm Beach Kennel Club at 1111 North Congress Ave., West Palm Beach, FL 33409-6317. <br/><br/>
-        	Did the dog race the day he or she died? Yes.
-        </h1>
         <script type="text/javascript">
             var map = L.map('map').setView([26.6926601, -80.0884584], 16);
             var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -18,7 +26,14 @@
                 attribution: 'Data, imagery and map information provided by <a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
             });
             map.addLayer(osmLayer);
-            var marker = L.marker([26.6926601, -80.0884584]).addTo(map);
+            var blackIcon = L.Icon.extend({
+                options: {
+                    iconUrl: "/static/marker-24%402x.png",
+                    iconSize: [35, 35]
+                }
+            });
+            var marker = L.marker([26.6926601, -80.0884584], {icon: new blackIcon()}).addTo(map);
         </script>
+        <iframe allowtransparency="true" src="http://www.naplesnews.com/services/cobrand/footer/" scrolling="no"frameborder="0" style="border-width:0px;height: 150px; width: 100%;"></iframe>
     </body>
 </html>

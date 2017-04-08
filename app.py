@@ -2,10 +2,11 @@ import csv
 from flask import Flask
 from flask import abort
 from flask import render_template
-app = Flask(__name__)  # Note the double underscores on each side!
+app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0  # Note the double underscores on each side!
 
 def get_csv():
-    csv_path = './static/grey2kgeocoded.csv'
+    csv_path = './static/grey2kgeocoded_agrec.csv'
     csv_file = open(csv_path, 'rU')
     csv_obj = csv.DictReader(csv_file)
     csv_list = list(csv_obj)
@@ -18,12 +19,12 @@ def index():
     object_list = get_csv()
     return render_template(template, object_list=object_list)
 
-@app.route("/<row_id>/")
-def detail(row_id):
+@app.route("/<g2k_row_id>/")
+def detail(g2k_row_id):
     template = "detail.html"
     object_list = get_csv()
     for row in object_list:
-        if row['row_id'] == row_id:
+        if row['g2k_row_id'] == g2k_row_id:
             return render_template(template, object=row)
     abort(404)
 
