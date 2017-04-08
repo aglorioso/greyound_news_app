@@ -3,7 +3,7 @@ import csv
 from flask import Flask
 from flask import abort
 from flask import render_template
-app = Flask(__name__,static_folder="static") # Note the double underscores on each side!
+app = Flask(__name__) # Note the double underscores on each side!
 #app.config.from_yaml(os.join(app.root_path, 'config.yml')) 
 
 def get_csv():
