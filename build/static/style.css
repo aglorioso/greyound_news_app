@@ -22,7 +22,7 @@ h1 {
     margin: 10;
     padding: 30;
     font-size: 20px;
-    line-height: 50px;
+    line-height: 30px;
     font-weight: bold;
     font-style: italic;
     text-shadow: 0.3px 0.3px 0px gray;
@@ -30,7 +30,7 @@ h1 {
 }
 h2 {
     margin: 20;
-    padding: 40;
+    padding: 20;
     font-size: 12px;
     line-height: 25px;
     font-weight: normal;
