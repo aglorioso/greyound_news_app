@@ -11,8 +11,8 @@ nav {
     height: 35px;
 }
 nav img {
-    height: 65px;
-    padding: 50px;
+    height: 35px;
+    padding: 100px;
 }
 header {
     margin: 100px 10px 15px 10px;
@@ -41,7 +41,7 @@ h2 {
 
 .byline {
     margin: 6px 0 0 0;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
 }
 .byline a {
