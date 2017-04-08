@@ -1,9 +1,10 @@
 import csv
+#from flask_extended import Flask
 from flask import Flask
 from flask import abort
 from flask import render_template
-app = Flask(__name__)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0  # Note the double underscores on each side!
+app = Flask(__name__,static_folder="static") # Note the double underscores on each side!
+#app.config.from_yaml(os.join(app.root_path, 'config.yml')) 
 
 def get_csv():
     csv_path = './static/grey2kgeocoded_agrec.csv'
@@ -11,7 +12,6 @@ def get_csv():
     csv_obj = csv.DictReader(csv_file)
     csv_list = list(csv_obj)
     return csv_list
-
 
 @app.route("/")
 def index():
