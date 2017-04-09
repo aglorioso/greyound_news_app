@@ -3,14 +3,14 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href=".{{ url_for('static', filename='style.css') }}" >     
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" >
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" >
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
     </head>
 
     <body>
         <nav>
             <iframe allowtransparency="true" src="http://www.naplesnews.com.com/services/cobrand/header/" scrolling="no" frameborder="0" style="border-width:0px; height: 40px; width: 110% !important;margin-left:-10px;"></iframe>
-            <a href="www.naplesnews.com" target="_blank">
+            <a href="http://www.naplesnews.com" target="_blank">
             <img src=".{{ url_for('static', filename='Naples_Hor_ST_Color_RGB.png') }}">
             </a>
         </nav>
@@ -18,7 +18,7 @@
             <h1>These are the 383 greyhounds who have died in service to the Florida dog racing industry since 2013.</h1></header></br>
             <h2>Greyhounds have been tied to gambling in Florida since 1931 but this year could be different.</br></br>
 
-            A Senate proposed gambling bill, SB8, has unbinds the race dogs from the gaming industry.</br></br>
+            A Senate proposed gambling bill, <a href="http://www.flsenate.gov/Session/Bill/2017/00008/?Tab=BillText" target="_blank">SB8</a>, unbinds the race dogs from the gaming industry.</br></br>
 
             In an effort to outlaw greyhound racing from Florida, a national, tax-exempt non-profit, GREY2K, argues greyhound racing is a dying industry. In 2013, the organization worked to implement a rule that would require greyhound race-dog trainers to report when dogs die at race tracks and on kennel grounds to the state. Since then, 383 dogs have been reported dead.</br></br>
 
@@ -26,9 +26,9 @@
 
             These is an interactive presentation of the deads reported dead. </br></br>
 
-            Sources: Florida's Department of Business Regulation, GREY2K state records. </br></br>
+            Sources: Florida's Department of Business Regulation, GREY2K maintained state records. </br></br>
 
-            Checkout Naples Daily News' companion piece: <a href="http://bit.ly/2ofC66V" target="_blank">Greyhound activists join Florida's gambling fight</a>.
+            Checkout Naples Daily News' companion piece for this story: <a href="http://bit.ly/2ofC66V" target="_blank">Greyhound activists join Florida's gambling fight</a>.
             <div class="byline"><p>
                 By <a href="http://naplesnews.com/search/Alexandra%20Glorioso/" target="_blank">Alexandra Glorioso</a>
             </p></div>
@@ -50,10 +50,10 @@
             </tr>
         {% endfor %}
         </table>
-       <iframe allowtransparency="true" src="https://www.naplesnews.com/services/cobrand/footer/" scrolling="no" frameborder="0" style="border-width:0px;height: 150px; width: 100%;"></iframe>
+       <iframe allowtransparency="true" src="http://www.naplesnews.com/services/cobrand/footer/" scrolling="no" frameborder="0" style="border-width:0px;height: 150px; width: 100%;"></iframe>
         <script type="text/javascript">
             var map = L.map('map').setView([28.538336, -81.379234], 6);
-            var osmLayer = new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            var osmLayer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 18,
                 attribution: 'Data, imagery and map information provided by <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.'
             });
