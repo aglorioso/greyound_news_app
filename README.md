@@ -12,4 +12,5 @@
             <a href="http://naplesnews-floridagreyhounds.com/build/index.html">383 greyhounds have died in service to the Florida racing industry since 2013. This year, they could be cut free from gambling all together. Check out their stories.</a> <br/><br/>
             </h1>
         </header>
-         
+</body>
+</html>
