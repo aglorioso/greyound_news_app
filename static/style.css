@@ -74,8 +74,8 @@ h6 {
     margin: 20;
     padding: 20;
     font-size: 20px;
-    line-height: 15px;
-    font-weight: bold;
+    line-height: 25px;
+    font-weight: normal;
     font-style: italic;
     text-shadow: 0.3px 0.3px 0px gray;
     letter-spacing: .01em;
